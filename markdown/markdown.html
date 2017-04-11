@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Markdown</title>
+</head>
+<body>
+    <div class="left-wrapper">
+        <input type="text" id="titleInput" value="无标题文章">
+        <ul class="tools"></ul>
+        <textarea id="articleInput"></textarea>
+    </div>
+    <div class="right-wrapper">
+        <div class="output">
+            <h1 id="titleOutput"></h1>
+            <div id="articleOutput">
+        </div>
+    </div>
+</body>
+<script>
+    const titleInput = document.getElementById('titleInput');
+    titleInput.select();
+
+    let throttle = (method) => {
+        method.tId && clearTimeout(method.tId);
+        method.tId = setTimeout(function(){
+            method();
+        },140);
+    };
+    titleInput.addEventListener('keyup',()=>{
+        throttle(addTitle)
+    })
+</script>
+</html>
